@@ -34,14 +34,9 @@ jobs:
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  # Use technique 1 since only option available to me.
-  # https://github.com/marketplace/actions/slack-send (Created by Slack)
-  # notify-slack-of-failure:
-  #   name: Notify Slack Of Failure
-  #   needs: lint
-  #   runs-on: ubuntu-latest
-  #   steps:
-      - name: send to slack
+      # Use technique 1 since only option available to me.
+      # https://github.com/marketplace/actions/slack-send (Created by Slack)
+      - name: Notify slack of failure
         uses: slackapi/slack-github-action@v1.25.0
         if: ${{ failure() }}
         with:
