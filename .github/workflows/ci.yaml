@@ -43,9 +43,11 @@ jobs:
       - name: send to slack
         uses: slackapi/slack-github-action@v1.25.0
         with:
+          # yamllint disable rule:line-length
           payload: |
             {
               "text": "GitHub Action build result: Failed \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
             }
+          # yamllint enable rule:line-length
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
