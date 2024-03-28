@@ -27,11 +27,25 @@ jobs:
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@2.0.0
 
-  lint:
+  markdownlint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: nosborn/github-action-markdown-cli@v3.3.0
+        name: markdownlint
         with:
           files: .
+
+  terraform-fmt-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.1.7
+
+      - name: tf fmt check
+        run: terraform fmt -check -recursive
+      

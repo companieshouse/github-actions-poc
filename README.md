@@ -14,6 +14,7 @@ For this POC I am using a selection of linters and validators:
 * shellcheck
 * markdownlint
 * yamllint
+* terraform fmt -check
 
 ## dependabot
 
