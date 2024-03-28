@@ -6,28 +6,7 @@ on:
   push:
 
 jobs:
-  yamlint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: 'Yamllint'
-        uses: karancode/yamllint-github-action@v2.1.1
-        with:
-          yamllint_strict: true
-          yamllint_comment: true
-        env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  shellcheck:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Run ShellCheck
-        uses: ludeeus/action-shellcheck@2.0.0
-
-  markdownlint:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,14 +16,20 @@ jobs:
         with:
           files: .
 
-  terraform-fmt-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.1.7
 
       - name: tf fmt check
         run: terraform fmt -check -recursive
+
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@2.0.0
+
+      - name: 'Yamllint'
+        uses: karancode/yamllint-github-action@v2.1.1
+        with:
+          yamllint_strict: true
+          yamllint_comment: true
+        env:
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
