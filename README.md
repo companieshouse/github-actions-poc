@@ -16,6 +16,15 @@ For this POC I am using a selection of linters and validators:
 * yamllint
 * terraform fmt -check
 
+### Failure notifications
+
+When the ci workflow fails it will notify the `#team-rand-poc-ci` channel via a
+workflow webhook.
+[This is configured as per instructions in the slack GitHub Action](https://github.com/marketplace/actions/slack-send#technique-1-slack-workflow-builder)
+
+There is a secret registered with the repository `SLACK_WEBHOOK_URL` which
+contains the webhook URL which Github can use to send the notification.
+
 ## dependabot
 
 This workflow will automatically merge dependabot PRs following successful ci
