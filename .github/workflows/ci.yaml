@@ -48,4 +48,3 @@ jobs:
 
       - name: tf fmt check
         run: terraform fmt -check -recursive
-      
