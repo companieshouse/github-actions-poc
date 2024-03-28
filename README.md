@@ -15,6 +15,7 @@ For this POC I am using a selection of linters and validators:
 * markdownlint
 * yamllint
 * terraform fmt -check
+
 ### Failure notifications
 
 When the ci workflow fails it will notify the `#team-rand-poc-ci` channel via a
