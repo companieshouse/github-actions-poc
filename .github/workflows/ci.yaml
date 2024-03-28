@@ -33,3 +33,23 @@ jobs:
           yamllint_comment: true
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Use technique 1 since only option available to me.
+  # https://github.com/marketplace/actions/slack-send (Created by Slack)
+  notify-slack-of-failure:
+    name: Notify Slack Of Failure
+    needs: lint
+    runs-on: ubuntu-latest
+    if: ${{ failure() }}
+    steps:
+      - name: send to slack
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          # yamllint disable rule:line-length
+          payload: |
+            {
+              "text": "GitHub Action build result: Failed \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+            }
+          # yamllint enable rule:line-length
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
