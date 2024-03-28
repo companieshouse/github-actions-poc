@@ -1,8 +1,8 @@
 ---
 name: ci
 
+# yamllint disable-line rule:truthy
 on:
-  # yamllint disable-line rule:truthy
   push:
 
 jobs:
