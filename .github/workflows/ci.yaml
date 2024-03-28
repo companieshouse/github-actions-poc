@@ -45,8 +45,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "GitHub Action build result: ${LINT_RESULT}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+              "text": "GitHub Action build result: Failed \n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          LINT_RESULT: ${{ jobs.lint.result }}
