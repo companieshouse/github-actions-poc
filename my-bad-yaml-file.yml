@@ -1,0 +1,5 @@
+no-starting-elemnt: true
+
+  # comment misaligned
+comment:
+  not-aligned: true
