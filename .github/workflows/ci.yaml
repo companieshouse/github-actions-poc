@@ -37,7 +37,7 @@ jobs:
       # Use technique 1 since only option available to me.
       # https://github.com/marketplace/actions/slack-send (Created by Slack)
       - name: Notify slack of failure
-        uses: slackapi/slack-github-action@v1.25.0
+        uses: slackapi/slack-github-action@v1.26.0
         if: ${{ failure() }}
         with:
           # yamllint disable rule:line-length
