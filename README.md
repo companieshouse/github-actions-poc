@@ -29,3 +29,7 @@ contains the webhook URL which Github can use to send the notification.
 
 This workflow will automatically merge dependabot PRs following successful ci
 workflow
+
+# I am a bad bit of markdown!
+I Really am I should have separated this paragraph from the title. And I shouldn't have made it a 
+heading 1 nor ended it with an exclamation mark. Am I missing something about this paragraph? It is also a very loooooong line which should be <80 characters but it is not.
